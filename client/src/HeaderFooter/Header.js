@@ -17,6 +17,11 @@ const Wrapper = styled.div`
   height: 10vh;
   display: flex;
   padding: 20px;
+  display: block;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Nav = styled(NavLink)`

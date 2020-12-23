@@ -1,8 +1,9 @@
 import React from "react";
 import GlobalStyle from "./globalStyles";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "./HeaderFooter/Header";
+import MobileHeader from "./HeaderFooter/MobileHeader";
+import Footer from "./HeaderFooter/Footer";
 import HomePage from "./HomePage";
 import NewArrivals from "./NewArrivals";
 
@@ -11,6 +12,8 @@ function App() {
     <Router>
       <GlobalStyle />
       <Header />
+      <MobileHeader />
+
       <Switch>
         <Route exact path="/">
           <HomePage />
