@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 `;
 
 const FootBox = styled.div`
-  background: lavenderblush;
+  background: black;
   padding: 20px;
   text-align: center;
 `;
