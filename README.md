@@ -1,2 +1,6 @@
 # demo_shop
-example of shop with admin capabilities
+Example of shop with admin capabilities
+
+Technologies Used:
+
+React JS, Styled Components, Node JS, React Router Dom, 
