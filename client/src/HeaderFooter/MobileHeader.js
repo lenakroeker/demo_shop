@@ -68,6 +68,7 @@ const Header = styled.div`
   left: 0;
   display: none;
   position: fixed;
+  z-index: 2;
   @media (max-width: 768px) {
     display: block;
   }

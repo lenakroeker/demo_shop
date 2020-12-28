@@ -8,11 +8,13 @@ export const Header = () => {
   const history = useHistory();
   return (
     <Wrapper>
-      <Nav to="/">Home</Nav>
-      <Nav to="/new">New Arrivals</Nav>
-      <LogoDiv>
+      <LogoDiv onClick={() => history.push("/")}>
         <Logo />
       </LogoDiv>
+      <Navigation>
+        <Nav to="/">Home</Nav>
+        <Nav to="/new">New Arrivals</Nav>
+      </Navigation>
       <CartDiv
         onClick={() => {
           history.push("/cart");
@@ -37,6 +39,10 @@ const Wrapper = styled.div`
   }
 `;
 
+const Navigation = styled.div`
+  margin-left: 140px;
+`;
+
 const Nav = styled(NavLink)`
   margin-left: 40px;
 `;
@@ -45,9 +51,10 @@ const LogoDiv = styled.div`
   width: 200px;
   text-align: center;
   top: 15px;
-  left: calc(50vw - 100px);
+  left: 10px;
   position: absolute;
   color: lavender;
+  cursor: pointer;
 `;
 
 const CartDiv = styled.div`
