@@ -3,4 +3,4 @@ Example of shop with admin capabilities
 
 Technologies Used:
 
-React JS, Styled Components, Node JS, React Router Dom, Redux
+React JS, Styled Components, Node JS, React-Router-Dom, React-Awesome-Slider, Redux
