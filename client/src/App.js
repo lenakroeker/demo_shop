@@ -5,6 +5,7 @@ import Header from "./HeaderFooter/Header";
 import MobileHeader from "./HeaderFooter/MobileHeader";
 import Footer from "./HeaderFooter/Footer";
 import HomePage from "./pages/HomePage";
+import ItemDetails from "./pages/ItemDetails";
 import NewArrivals from "./pages/NewArrivals";
 import Cart from "./pages/Cart";
 
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route exact path="/new">
           <NewArrivals />
+        </Route>
+        <Route exact path="/detailstest">
+          <ItemDetails />
         </Route>
       </Switch>
       <Footer />
