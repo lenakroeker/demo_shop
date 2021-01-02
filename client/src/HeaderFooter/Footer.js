@@ -7,7 +7,7 @@ export const Footer = () => {
       <FootBox>address</FootBox>
       <FootBox>info 1</FootBox>
       <FootBox>info 2</FootBox>
-      <FootBox>social</FootBox>
+      <FootBoxS>social</FootBoxS>
     </Wrapper>
   );
 };
@@ -25,6 +25,14 @@ const Wrapper = styled.div`
 `;
 
 const FootBox = styled.div`
+  background: black;
+  padding: 20px;
+  text-align: center;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+const FootBoxS = styled.div`
   background: black;
   padding: 20px;
   text-align: center;

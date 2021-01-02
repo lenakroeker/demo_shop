@@ -7,6 +7,10 @@ import Footer from "./HeaderFooter/Footer";
 import HomePage from "./pages/HomePage";
 import ItemDetails from "./pages/ItemDetails";
 import NewArrivals from "./pages/NewArrivals";
+import SizeChart from "./pages/SizeChart";
+import MobileBrands from "./pages/MobileBrands";
+import MobileCategories from "./pages/MobileCategories";
+import AdminLogin from "./admin/AdminLogin";
 import Cart from "./pages/Cart";
 
 function App() {
@@ -27,6 +31,18 @@ function App() {
         </Route>
         <Route exact path="/detailstest">
           <ItemDetails />
+        </Route>
+        <Route exact path="/sizechart">
+          <SizeChart />
+        </Route>
+        <Route exact path="/mbrands">
+          <MobileBrands />
+        </Route>
+        <Route exact path="/mcategories">
+          <MobileCategories />
+        </Route>
+        <Route exact path="/admin/login">
+          <AdminLogin />
         </Route>
       </Switch>
       <Footer />

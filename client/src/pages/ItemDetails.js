@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { NavLink, useHistory } from "react-router-dom";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 
@@ -8,12 +9,27 @@ export const ItemDetails = () => {
     <Wrapper>
       <Item>
         <Title>Item Name</Title>
+
         <Info>
-          <Details>Stuff about item</Details>
+          <Details>
+            Stuff about item
+            <Brand>By: Label</Brand>
+          </Details>
           <Quantity>
             <Label for="quantity">Quantity</Label>
             <Input type="number" id="quantity" />
           </Quantity>
+          <Size>
+            <Label for="size">Size</Label>
+            <Select name="size" id="size">
+              <Option value="xs">XS</Option>
+              <Option value="s">S</Option>
+              <Option value="m">M</Option>
+              <Option value="l">L</Option>
+              <Option value="xl">XL</Option>
+            </Select>
+            <NavSize to="/sizechart">Sizing Chart</NavSize>
+          </Size>
           <AddDiv>
             <Button>Add To Cart</Button>
           </AddDiv>
@@ -69,6 +85,7 @@ const Info = styled.div`
   grid-template-areas:
     "details"
     "quantity"
+    "size"
     "button";
 
   @media (max-width: 768px) {
@@ -76,6 +93,8 @@ const Info = styled.div`
     grid-template-rows: 50px 50px 200px;
   }
 `;
+
+const Brand = styled.p``;
 
 const Details = styled.div`
   grid-area: details;
@@ -93,6 +112,23 @@ const Input = styled.input`
 const Label = styled.label`
   margin-right: 20px;
 `;
+
+const Size = styled.div`
+  grid-area: size;
+`;
+
+const NavSize = styled(NavLink)`
+  cursor: pointer;
+  color: grey;
+  display: block;
+`;
+
+const Select = styled.select`
+  width: 100px;
+  height: 2em;
+`;
+
+const Option = styled.option``;
 
 const AddDiv = styled.div`
   grid-area: button;
