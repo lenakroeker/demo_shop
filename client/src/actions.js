@@ -18,7 +18,12 @@ export const updateQuantity = (item) => ({
   item,
 });
 
-export const removeItem = (item) => ({
-  type: "REMOVE_ITEM",
-  item,
+// admin
+
+export const adminLogin = () => ({
+  type: "LOG_IN",
+});
+
+export const adminLogout = () => ({
+  type: "LOG_OUT",
 });
