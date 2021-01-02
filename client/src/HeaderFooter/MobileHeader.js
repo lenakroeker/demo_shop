@@ -40,6 +40,8 @@ export const MobileHeader = () => {
         </Close>
         <Nav to="/">Home</Nav>
         <Nav to="/new">NewArrivals</Nav>
+        <Nav to="/mbrands">Shop By Brand</Nav>
+        <Nav to="/mcategories">Shop By Category</Nav>
       </DropContent>
     </Wrapper>
   );
