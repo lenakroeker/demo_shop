@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 require("dotenv").config();
 
-const { testHandler } = require("./handlers");
+const { testHandler, postItem, updateItem, deleteItem } = require("./handlers");
 
 express()
   .use(function (req, res, next) {
@@ -28,6 +28,18 @@ express()
   //test
 
   .get("/test", testHandler)
+
+  //post item
+
+  .post("/posted", postItem)
+
+  // update item
+
+  .put("/update/:itemid", updateItem)
+
+  //delete item
+
+  .delete("/delete/itemid", deleteItem)
 
   // Node spins up our server and sets it to listen on port 8000.
   .listen(8000, () => console.log(`Listening on port 8000`));

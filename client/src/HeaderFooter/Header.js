@@ -3,10 +3,16 @@ import styled from "styled-components";
 import { NavLink, useHistory } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import Logo from "../Logo";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   const history = useHistory();
   const [BrandDropOpen, setBrandDropOpen] = useState(false);
+  const viewState = useSelector((state) => state.viewState);
+  const { cartItemTotal } = viewState;
+
+  //dropdown menus
+
   const BrandDropHandle = () => {
     setCatDropOpen(false);
     setBrandDropOpen(!BrandDropOpen);
@@ -15,6 +21,15 @@ export const Header = () => {
   const CatDropHandle = () => {
     setBrandDropOpen(false);
     setCatDropOpen(!CatDropOpen);
+  };
+
+  // off-click close dropdowns
+
+  window.onclick = (e) => {
+    if (!e.target.matches(".drop")) {
+      setBrandDropOpen(false);
+      setCatDropOpen(false);
+    }
   };
   return (
     <Wrapper>
@@ -25,7 +40,9 @@ export const Header = () => {
         <Nav to="/">Home</Nav>
         <Nav to="/new">New Arrivals</Nav>
         <NavDrop>
-          <DropBtn onClick={() => BrandDropHandle()}>Shop By Brand</DropBtn>
+          <DropBtn onClick={() => BrandDropHandle()} className="drop">
+            Shop By Brand
+          </DropBtn>
 
           {BrandDropOpen && (
             <DropdownContent onClick={() => BrandDropHandle()}>
@@ -42,7 +59,9 @@ export const Header = () => {
           )}
         </NavDrop>
         <NavDrop>
-          <DropBtn onClick={() => CatDropHandle()}>Shop By Category</DropBtn>
+          <DropBtn onClick={() => CatDropHandle()} className="drop">
+            Shop By Category
+          </DropBtn>
 
           {CatDropOpen && (
             <DropdownContent onClick={() => CatDropHandle()}>
@@ -59,13 +78,15 @@ export const Header = () => {
           )}
         </NavDrop>
       </Navigation>
-      <CartDiv
-        onClick={() => {
-          history.push("/cart");
-        }}
-      >
-        <FaShoppingCart size={30} color="white" />
-      </CartDiv>
+
+      <CartWrapper>
+        <CartNum exact to="/cart">
+          {cartItemTotal !== 0 && cartItemTotal}
+        </CartNum>
+        <CartLink exact to="/cart">
+          <FaShoppingCart size={30} color="white" />
+        </CartLink>
+      </CartWrapper>
     </Wrapper>
   );
 };
@@ -110,11 +131,20 @@ const LogoDiv = styled.div`
   cursor: pointer;
 `;
 
-const CartDiv = styled.div`
-  position: absolute;
+const CartLink = styled(NavLink)``;
+const CartNum = styled(NavLink)`
+  color: white;
+  margin-right: -29px;
+  margin-top: -6px;
+  font-size: 12px;
+  font-weight: bolder;
+`;
+
+const CartWrapper = styled.div`
+  position: fixed;
+  display: flex;
   top: 20px;
   right: 30px;
-  cursor: pointer;
 `;
 
 //dropdown stuff

@@ -13,6 +13,7 @@ import MobileCategories from "./pages/MobileCategories";
 import AdminLogin from "./admin/AdminLogin";
 import AdminHome from "./admin/AdminHome";
 import AddItem from "./admin/AddItem";
+import FindItemById from "./admin/FindItemById";
 import UpdateRemoveItem from "./admin/UpdateRemoveItem";
 import Orders from "./admin/Orders";
 import Cart from "./pages/Cart";
@@ -55,6 +56,9 @@ function App() {
           <AddItem />
         </Route>
         <Route exact path="/admin/updateremove">
+          <FindItemById />
+        </Route>
+        <Route exact path="/admin/updateremove/:itemid">
           <UpdateRemoveItem />
         </Route>
         <Route exact path="/admin/orders">
