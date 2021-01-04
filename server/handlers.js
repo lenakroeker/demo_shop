@@ -26,4 +26,45 @@ const testHandler = (req, res) => {
   res.status(200).json({ status: 200, data: "it works" });
 };
 
-module.exports = { testHandler };
+const postItem = (req, res) => {
+  const appPostsRef = db.ref("products");
+  console.log(appPostsRef);
+  appPostsRef.push(req.body).then(() => {
+    res.status(200).json({
+      status: 200,
+      message: "item successfully posted!",
+    });
+  });
+};
+
+const updateItem = async (req, res) => {
+  const id = req.params.itemid;
+  console.log("update backend", id);
+  console.log("update req", req.body);
+  try {
+    const data = await queryUpdateInDatabase(`products`, id, req.body);
+    res.status(200).json({
+      status: 200,
+      data: data,
+    });
+  } catch (error) {
+    // console.log(error);
+  }
+};
+
+const deleteItem = async (req, res) => {
+  const id = req.params.postid;
+  console.log("delete backend", id);
+
+  try {
+    const data = await queryDeleteFromDatabase(`products`, id);
+    res.status(200).json({
+      status: 200,
+      message: `product ${id} has been deleted`,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { testHandler, postItem, updateItem, deleteItem };

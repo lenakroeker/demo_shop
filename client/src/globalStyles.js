@@ -13,6 +13,12 @@ html, body {
     color: white;
 }
 
+button {
+    cursor: pointer;
+    background: lightseagreen;
+    padding: 10px;
+}
+
 `;
 
 export default GlobalStyle;
