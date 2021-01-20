@@ -3,7 +3,13 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 require("dotenv").config();
 
-const { testHandler, postItem, updateItem, deleteItem } = require("./handlers");
+const {
+  testHandler,
+  createUser,
+  postItem,
+  updateItem,
+  deleteItem,
+} = require("./handlers");
 
 express()
   .use(function (req, res, next) {
@@ -28,6 +34,10 @@ express()
   //test
 
   .get("/test", testHandler)
+
+  //create new user
+
+  .post("/users", createUser)
 
   //post item
 

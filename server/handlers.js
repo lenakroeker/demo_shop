@@ -26,6 +26,53 @@ const testHandler = (req, res) => {
   res.status(200).json({ status: 200, data: "it works" });
 };
 
+//check if exising user/create a new user
+
+const createUser = async (req, res) => {
+  const returningUser = await getUser(req.body.email);
+  console.log(returningUser);
+  if (returningUser) {
+    res
+      .status(200)
+      .json({ status: 200, data: req.body, message: "Welcome Back" });
+    return;
+  } else {
+    const appUsersRef = db.ref("appUsers");
+    appUsersRef.push(req.body).then(() => {
+      res.status(200).json({
+        status: 200,
+        data: req.body,
+        message: "Welcome",
+      });
+    });
+  }
+};
+
+const getUser = async (email) => {
+  const data = (await queryDatabase(`appUsers`)) || {};
+  const dataValue = Object.keys(data)
+    .map((item) => data[item])
+    .find((obj) => obj.email === email);
+  return dataValue || false;
+};
+
+//query database
+
+const queryDatabase = async (key) => {
+  const ref = db.ref(key);
+  let data;
+  await ref.once(
+    "value",
+    (snapshot) => {
+      data = snapshot.val();
+    },
+    (err) => {
+      console.log(err);
+    }
+  );
+  return data;
+};
+
 const postItem = (req, res) => {
   const appPostsRef = db.ref("products");
   console.log(appPostsRef);
@@ -67,4 +114,11 @@ const deleteItem = async (req, res) => {
   }
 };
 
-module.exports = { testHandler, postItem, updateItem, deleteItem };
+module.exports = {
+  testHandler,
+  createUser,
+  getUser,
+  postItem,
+  updateItem,
+  deleteItem,
+};

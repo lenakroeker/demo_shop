@@ -9,8 +9,8 @@ html, body {
     overflow-y: auto;
     box-sizing: border-box;
     font-family:Arial, Helvetica, sans-serif;
-    background: rgb(63, 58, 79);
-    color: white;
+    background: whitesmoke;
+    color: black;
 }
 
 button {
