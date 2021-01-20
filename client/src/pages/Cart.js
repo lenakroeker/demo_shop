@@ -79,7 +79,7 @@ const ItemImg = styled.img`
 `;
 
 const Name = styled.p`
-  color: white;
+  color: darkgray;
   margin-left: 30px;
   cursor: pointer;
 `;
