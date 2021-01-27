@@ -38,6 +38,8 @@ export const Header = () => {
       </LogoDiv>
       <Navigation>
         <Nav to="/">Home</Nav>
+        <Nav to="/all">Shop All</Nav>
+
         <Nav to="/new">New Arrivals</Nav>
         <NavDrop>
           <DropBtn onClick={() => BrandDropHandle()} className="drop">

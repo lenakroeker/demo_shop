@@ -9,6 +9,8 @@ const {
   postItem,
   updateItem,
   deleteItem,
+  getAllProducts,
+  getProductById,
 } = require("./handlers");
 
 express()
@@ -34,6 +36,14 @@ express()
   //test
 
   .get("/test", testHandler)
+
+  //get all products
+
+  .get("/allProducts", getAllProducts)
+
+  //get product by id
+
+  .get(`/product/by-product/:productId`, getProductById)
 
   //create new user
 

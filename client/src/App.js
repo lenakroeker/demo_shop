@@ -6,6 +6,7 @@ import Header from "./HeaderFooter/Header";
 import MobileHeader from "./HeaderFooter/MobileHeader";
 import Footer from "./HeaderFooter/Footer";
 import HomePage from "./pages/HomePage";
+import All from "./pages/All";
 import ItemDetails from "./pages/ItemDetails";
 import NewArrivals from "./pages/NewArrivals";
 import SizeChart from "./pages/SizeChart";
@@ -32,13 +33,16 @@ function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
+          <Route exact path="/all">
+            <All />
+          </Route>
           <Route exact path="/cart">
             <Cart />
           </Route>
           <Route exact path="/new">
             <NewArrivals />
           </Route>
-          <Route exact path="/detailstest">
+          <Route exact path="/product/:productId">
             <ItemDetails />
           </Route>
           <Route exact path="/sizechart">

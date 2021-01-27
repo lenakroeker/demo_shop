@@ -26,6 +26,40 @@ const testHandler = (req, res) => {
   res.status(200).json({ status: 200, data: "it works" });
 };
 
+// get all products
+
+const getAllProducts = (req, res) => {
+  const allPosts = db.ref("products");
+  allPosts.ref.once(
+    "value",
+    function (snapshot) {
+      res.status(200).json({ status: 200, data: snapshot.val() });
+    },
+    function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    }
+  );
+};
+
+const getProductById = async (req, res) => {
+  const id = req.params.productId;
+  console.log("by id running" + id);
+  try {
+    const data = (await queryDatabase(`products`)) || {};
+    const dataValue = Object.keys(data)
+      .map((item) => data[item])
+      .find((obj) => obj.postId === id);
+    if (dataValue) {
+      res.status(200).json({
+        status: 200,
+        post: dataValue,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //check if exising user/create a new user
 
 const createUser = async (req, res) => {
@@ -121,4 +155,6 @@ module.exports = {
   postItem,
   updateItem,
   deleteItem,
+  getAllProducts,
+  getProductById,
 };

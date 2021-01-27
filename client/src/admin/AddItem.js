@@ -18,6 +18,9 @@ const initialState = {
   sizeL: 0,
   sizeXL: 0,
   category: "",
+  isEco: false,
+  isSale: false,
+  salePrice: null,
   isUploading: false,
   progress: 0,
 };
@@ -214,6 +217,35 @@ export const AddItem = () => {
         onChange={(ev) => handleChange(ev.target.value, "category")}
       />
 
+      <Radio>
+        <input
+          onChange={(ev) => handleChange(ev.target.value, "isEco")}
+          type="radio"
+          id="eco1"
+          name="eco"
+          value="true"
+        />
+        <LabelRad htmlFor="eco">Eco Collection</LabelRad>
+      </Radio>
+
+      <Radio>
+        <input
+          onChange={(ev) => handleChange(ev.target.value, "isSale")}
+          type="radio"
+          id="sale"
+          name="sale"
+          value="true"
+        />
+        <LabelRad htmlFor="sale">On Sale</LabelRad>
+      </Radio>
+
+      <Label htmlFor="salePrice">Sale Price $</Label>
+      <Input
+        type="text"
+        name="salePrice"
+        onChange={(ev) => handleChange(ev.target.value, "salePrice")}
+      />
+
       <Label for="quantityos">One-Size:</Label>
       <Input
         onChange={(ev) => handleChange(ev.target.value, "sizeOS")}
@@ -284,6 +316,13 @@ const Input = styled.input`
     background-color: white;
   }
 `;
+
+const Radio = styled.div`
+  margin: 20px;
+  display: inline;
+  color: blue;
+`;
+const LabelRad = styled.label``;
 
 const ContentBox = styled.textarea`
   display: block;

@@ -197,7 +197,8 @@ const InfoImg = styled.img`
 
 const Company = styled.h3`
   font-size: 55px;
-  color: darkolivegreen;
+  color: black;
+  opacity: 0.8;
   margin-bottom: 30px;
   cursor: pointer;
 `;

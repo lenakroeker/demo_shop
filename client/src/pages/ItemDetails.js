@@ -1,23 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { NavLink, useHistory } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
+import { addItem, updateQuantity } from "../actions";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 
 export const ItemDetails = () => {
-  return (
+  const dispatch = useDispatch();
+  const cartState = useSelector((state) => state.cartState); // Access the state from the cartReducer
+  const [product, setProduct] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const params = useParams();
+  const productId = params.productId;
+
+  useEffect(() => {
+    fetch(`/product/by-product/${productId}`)
+      .then((res) => res.json())
+      .then((product) => {
+        console.log("product" + product);
+        setProduct(product.post);
+      });
+  }, [productId]);
+
+  console.log(product);
+
+  const {
+    brand,
+    name,
+    image1URL,
+    image2URL,
+    image3URL,
+    price,
+    postId,
+  } = product;
+
+  const handleAddToCart = () => {
+    return !cartState[postId]
+      ? dispatch(addItem({ ...product, postId, quantity: quantity }))
+      : dispatch(updateQuantity({ ...product, postId, quantity: +quantity }));
+  };
+
+  return brand ? (
     <Wrapper>
       <Item>
-        <Title>Item Name</Title>
+        <Title>{name}</Title>
 
         <Info>
           <Details>
             Stuff about item
-            <Brand>By: Label</Brand>
+            <Brand>By: {brand}</Brand>
           </Details>
           <Quantity>
             <Label for="quantity">Quantity</Label>
-            <Input type="number" id="quantity" />
+            <Input type="number" id="quantity" min="1" placeholder="1" />
           </Quantity>
           <Size>
             <Label for="size">Size</Label>
@@ -36,13 +72,15 @@ export const ItemDetails = () => {
         </Info>
         <Image>
           <AwesomeSlider fillParent="true">
-            <div data-src="https://m.media-amazon.com/images/G/01/Shopbop/p/prod/products/drmar/drmar300951071b/drmar300951071b_q1_2-0._SX664_QL90_.jpg" />
-            <div data-src="https://i.guim.co.uk/img/media/ac1c53dc8a3b549480149d041e9299097cb39955/0_302_1600_960/master/1600.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=72a96ac2a6a11b027782df30148181e9" />
-            <div data-src="https://media.glamour.com/photos/5c786327c8f3282db5088766/1:1/w_1800,h_1800,c_limit/0301_drmarten_lede_social_River.jpg" />
+            <div data-src={image1URL} />
+            <div data-src={image2URL} />
+            <div data-src={image3URL} />
           </AwesomeSlider>
         </Image>
       </Item>
     </Wrapper>
+  ) : (
+    <Wrapper>Error</Wrapper>
   );
 };
 
