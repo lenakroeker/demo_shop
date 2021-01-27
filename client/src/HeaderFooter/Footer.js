@@ -1,5 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import {
+  AiFillTwitterCircle,
+  AiFillInstagram,
+  AiFillFacebook,
+} from "react-icons/ai";
 
 export const Footer = () => {
   return (
@@ -7,12 +12,24 @@ export const Footer = () => {
       <FootBox>address</FootBox>
       <FootBox>info 1</FootBox>
       <FootBox>info 2</FootBox>
-      <FootBoxS>social</FootBoxS>
+      <FootBoxS>
+        {" "}
+        <SocialIcon>
+          <AiFillTwitterCircle size={30} />
+        </SocialIcon>
+        <SocialIcon>
+          <AiFillFacebook size={30} />
+        </SocialIcon>
+        <SocialIcon>
+          <AiFillInstagram size={30} />
+        </SocialIcon>
+      </FootBoxS>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  color: white;
   width: 100%;
   height: 20vh;
   display: grid;
@@ -36,6 +53,15 @@ const FootBoxS = styled.div`
   background: black;
   padding: 20px;
   text-align: center;
+`;
+
+const SocialIcon = styled.div`
+  display: inline;
+  cursor: pointer;
+  padding: 0 10px;
+  &:hover {
+    color: lightpink;
+  }
 `;
 
 export default Footer;
