@@ -77,6 +77,7 @@ export const Header = () => {
             </DropdownContent>
           )}
         </NavDrop>
+        <NavC to="/outlet">Outlet</NavC>
       </Navigation>
 
       <CartWrapper>
@@ -117,10 +118,18 @@ const Nav = styled(NavLink)`
   position: relative;
   display: inline-block;
   &:hover {
-    color: blue;
+    color: lightpink;
   }
 `;
 
+const NavC = styled(NavLink)`
+  color: lightpink;
+  position: relative;
+  display: inline-block;
+  &:hover {
+    color: crimson;
+  }
+`;
 const LogoDiv = styled.div`
   width: 200px;
   text-align: center;
@@ -141,7 +150,7 @@ const CartNum = styled(NavLink)`
 `;
 
 const CartWrapper = styled.div`
-  position: fixed;
+  position: absolute;
   display: flex;
   top: 20px;
   right: 30px;
@@ -149,7 +158,9 @@ const CartWrapper = styled.div`
 
 //dropdown stuff
 
-const NavDrop = styled.div``;
+const NavDrop = styled.div`
+  color: white;
+`;
 const DropBtn = styled.button`
   border: none;
   background: transparent;
@@ -157,22 +168,27 @@ const DropBtn = styled.button`
   margin: 0px -2px;
   font-size: 15px;
   padding: 5px 8px;
+  &:hover {
+    color: lightpink;
+  }
 
   &:active {
-    background: blue;
+    background: lightpink;
   }
 `;
 
 const DropdownContent = styled.ul`
-  margin-top: 18px;
+  margin-top: 16px;
   position: absolute;
   box-sizing: border-box;
   text-align: center;
+  color: black;
   left: 0;
   opacity: 0.9;
-  background: rgb(245, 35, 156, 0.8);
+  background: lightpink;
   width: calc(100vw - (100vw - 100%));
   padding: 0 10vw;
+  z-index: 2;
 `;
 
 const DropItem = styled(NavLink)`
@@ -180,11 +196,12 @@ const DropItem = styled(NavLink)`
   box-sizing: border-box;
   text-align: center;
   width: calc(70vw / 9);
-  color: white;
+  color: black;
   padding: 10px 10px;
   margin: 5px 0;
   &:hover {
-    background: blue;
+    background: black;
+    color: white;
   }
 `;
 

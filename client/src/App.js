@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import ItemDetails from "./pages/ItemDetails";
 import NewArrivals from "./pages/NewArrivals";
 import SizeChart from "./pages/SizeChart";
+import Outlet from "./pages/Outlet";
 import MobileBrands from "./pages/MobileBrands";
 import MobileCategories from "./pages/MobileCategories";
 import AdminLogin from "./admin/AdminLogin";
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route exact path="/sizechart">
             <SizeChart />
+          </Route>
+          <Route exact path="/outlet">
+            <Outlet />
           </Route>
           <Route exact path="/mbrands">
             <MobileBrands />
